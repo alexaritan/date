@@ -1,5 +1,5 @@
 # AlexDate
-Make working with dates easy!
+Make working with dates easy with this super lightweight, no-dependency, awesome date library!
 
 ## Get Started
 Install it
@@ -26,7 +26,7 @@ new Date();
 // 2020-07-10T22:53:54.038Z
 
 const elevenDaysFromNow = AlexDate(11).days.from.now;
-new Date(elevenDaysFromNow)
+new Date(elevenDaysFromNow);
 // 2020-07-21T22:53:54.038Z
 ```
 
