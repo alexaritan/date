@@ -1,0 +1,13 @@
+{
+	"name": "@alexaritan/date",
+	"version": "0.0.1",
+	"description": "Human readable date functions",
+	"main": "dist/app.js",
+	"types": "dist/app.d.ts",
+	"scripts": {
+		"build": "rm -rf dist && tsc -p .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Alex Aritan",
+	"license": "MIT"
+}
