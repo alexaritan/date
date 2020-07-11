@@ -10,7 +10,7 @@
 	},
 	"jest": {
 		"collectCoverage": true,
-     	"coverageReporters": ["text"],
+		"coverageReporters": ["text"],
 		"testMatch": ["<rootDir>/dist/**/*.test.js"],
 		"verbose": true
 	},

@@ -1,9 +1,18 @@
 export interface MyDate {
-	days: TimeDifference,
-	hours: TimeDifference,
-	minutes: TimeDifference,
+	after: MyDate,
+	ago(): number,
+	before: MyDate,
+	date(date: number): number,
+	day: MyDate,
+	days: MyDate,
+	from: MyDate,
+	hour: MyDate,
+	hours: MyDate,
+	minute: MyDate,
+	minutes: MyDate,
 	now(): number,
-	seconds: TimeDifference
+	second: MyDate
+	seconds: MyDate
 }
 
 export interface TimeDifference {

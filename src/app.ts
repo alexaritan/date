@@ -1,5 +1,5 @@
 import {AlexDate} from './date';
-import {oneDayInMilliseconds, oneHourInMilliseconds, oneMinuteInMilliseconds, oneSecondInMilliseconds} from './utils';
+import {oneDayInMilliseconds, oneHourInMilliseconds, oneMinuteInMilliseconds, oneSecondInMilliseconds} from './constants';
 
 export {
 	AlexDate,
