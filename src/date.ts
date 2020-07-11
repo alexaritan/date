@@ -29,20 +29,20 @@ export class AlexDate implements MyDate {
 		this.ago = () => {
 			if(unit === undefined) throw new Error ('Method "ago" cannot be called before specifying unit of time.');
 			return Date.now() - (value * unit);
-		}
+		};
 
 		this.date = (date: number) => {
 			if(unit === undefined) throw new Error ('Method "date" cannot be called before specifying unit of time.');
 			if(plusMinus === undefined) throw new Error ('Method "date" cannot be called before specifying whether before or after.');
 			if(typeof date !== 'number') throw new Error('Date must be passed in as a number.');
 			return date + (plusMinus * value * unit);
-		}
+		};
 
 		this.now = () => {
 			if(unit === undefined) throw new Error ('Method "now" cannot be called before specifying unit of time.');
 			if(plusMinus === undefined) throw new Error ('Method "now" cannot be called before specifying whether before or after.');
 			return Date.now() + (plusMinus * value * unit);
-		}
+		};
 
 		//These have to be defined like this in order for them to act as functions without needing to be called as a function.
 		//For example, d(3).days.ago() (what I want) vs d(3).days().ago() (what I don't want).

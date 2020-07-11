@@ -6,18 +6,27 @@
 	"types": "dist/app.d.ts",
 	"scripts": {
 		"build": "rm -rf dist && tsc -p .",
+		"lint": "eslint . --ext ts",
 		"test": "jest"
 	},
 	"jest": {
 		"collectCoverage": true,
-		"coverageReporters": ["text"],
-		"testMatch": ["<rootDir>/dist/**/*.test.js"],
+		"coverageReporters": [
+			"text"
+		],
+		"testMatch": [
+			"<rootDir>/dist/**/*.test.js"
+		],
 		"verbose": true
 	},
 	"author": "Alex Aritan",
 	"license": "MIT",
 	"devDependencies": {
 		"@types/jest": "^26.0.4",
-		"jest": "^26.1.0"
+		"@typescript-eslint/eslint-plugin": "^3.6.0",
+		"@typescript-eslint/parser": "^3.6.0",
+		"eslint": "^7.4.0",
+		"jest": "^26.1.0",
+		"typescript": "^3.9.6"
 	}
 }
