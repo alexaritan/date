@@ -8,7 +8,7 @@ export const oneDayInMilliseconds = oneHourInMilliseconds * 24;
 export const calculateTime = (startTime: number, adjustment: number): number => startTime + adjustment;
 
 export const timeCalculations = (unit: number, numberOfUnits: number): TimeDifference => {
-	const now = new Date().valueOf();
+	const now = Date.now();
 	return {
 		ago: calculateTime(now, -1 * unit * numberOfUnits),
 		before: {
