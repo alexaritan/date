@@ -1,4 +1,6 @@
 src
+dist/test
 .gitignore
 tsconfig.json
 node_modules
+docs
