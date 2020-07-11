@@ -6,8 +6,18 @@
 	"types": "dist/app.d.ts",
 	"scripts": {
 		"build": "rm -rf dist && tsc -p .",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "jest"
+	},
+	"jest": {
+		"collectCoverage": true,
+     	"coverageReporters": ["text"],
+		"testMatch": ["<rootDir>/dist/**/*.test.js"],
+		"verbose": true
 	},
 	"author": "Alex Aritan",
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"@types/jest": "^26.0.4",
+		"jest": "^26.1.0"
+	}
 }
