@@ -20,14 +20,14 @@ export const timeCalculations = (unit: number, numberOfUnits: number): TimeDiffe
 
 	const now = Date.now();
 	return {
-		ago: calculateTime(now, -1 * unit * numberOfUnits),
+		ago: () => calculateTime(now, -1 * unit * numberOfUnits),
 		before: {
 			date: (date: number) => calculateTime(date, -1 * unit * numberOfUnits),
-			now: calculateTime(now, -1 * unit * numberOfUnits)
+			now: () => calculateTime(now, -1 * unit * numberOfUnits)
 		},
 		from: {
 			date: (date: number) => calculateTime(date, unit * numberOfUnits),
-			now: calculateTime(now, unit * numberOfUnits)
+			now: () => calculateTime(now, unit * numberOfUnits)
 		}
 	}
 };

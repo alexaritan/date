@@ -9,7 +9,7 @@ export const AlexDate = (value: number): MyDate => {
 		days: timeCalculations(oneDayInMilliseconds, value),
 		hours: timeCalculations(oneHourInMilliseconds, value),
 		minutes: timeCalculations(oneMinuteInMilliseconds, value),
-		now: Date.now(),
+		now: () => Date.now(),
 		seconds:  timeCalculations(oneSecondInMilliseconds, value)
 	};
 };

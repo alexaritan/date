@@ -56,7 +56,7 @@ describe('utils', () => {
 
 		describe('#ago', () => {
 			it('should return the current datetime stamp minus the provided adjustment', () => {
-				expect(timeCalculations(oneDayInMilliseconds, 2).ago).toBe(Date.now() - (oneDayInMilliseconds * 2));
+				expect(timeCalculations(oneDayInMilliseconds, 2).ago()).toBe(Date.now() - (oneDayInMilliseconds * 2));
 			});
 		});
 
@@ -70,7 +70,7 @@ describe('utils', () => {
 
 			describe('#now', () => {
 				it('should return the current datetime stamp minus the provided adjustment', () => {
-					expect(timeCalculations(oneDayInMilliseconds, 2).before.now).toBe(Date.now() - (oneDayInMilliseconds * 2));
+					expect(timeCalculations(oneDayInMilliseconds, 2).before.now()).toBe(Date.now() - (oneDayInMilliseconds * 2));
 				});
 			});
 		});
@@ -85,7 +85,7 @@ describe('utils', () => {
 
 			describe('#now', () => {
 				it('should return the current datetime stamp plus the provided adjustment', () => {
-					expect(timeCalculations(oneDayInMilliseconds, 2).from.now).toBe(Date.now() + (oneDayInMilliseconds * 2));
+					expect(timeCalculations(oneDayInMilliseconds, 2).from.now()).toBe(Date.now() + (oneDayInMilliseconds * 2));
 				});
 			});
 		});
