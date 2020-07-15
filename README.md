@@ -8,15 +8,15 @@ Install it
 
 Then import it
 
-`import {AlexDate} from '@alexaritan/date';`
+`import {exactly} from '@alexaritan/date';`
 
 ## Usage
 
 Even the most complex of date calculations can be done easily. For example, need to calculate the datetime of 3 hours less than 11 days from now?
 
 ```
-const elevenDaysFromNow = new AlexDate(11).days.from.now();
-const threeHoursBefore11DaysFromNow = new AlexDate(3).hours.before.date(elevenDaysFromNow);
+const elevenDaysFromNow = exactly(11).days.from.now();
+const threeHoursBefore11DaysFromNow = exactly(3).hours.before.date(elevenDaysFromNow);
 ```
 
 Compatible with the built-in Date library's formatting functionality.
@@ -25,7 +25,7 @@ Compatible with the built-in Date library's formatting functionality.
 new Date();
 // 2020-07-10T22:53:54.038Z
 
-const elevenDaysFromNow = new AlexDate(11).days.from.now();
+const elevenDaysFromNow = exactly(11).days.from.now();
 new Date(elevenDaysFromNow);
 // 2020-07-21T22:53:54.038Z
 ```
