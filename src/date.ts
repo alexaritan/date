@@ -1,7 +1,7 @@
 import {MyDate} from './types';
 import {oneDayInMilliseconds, oneHourInMilliseconds, oneMinuteInMilliseconds, oneSecondInMilliseconds} from './constants';
 
-export class AlexDate implements MyDate {
+class AlexDate implements MyDate {
 
 	after: AlexDate = this;
 	ago: () => number;
@@ -125,3 +125,7 @@ export class AlexDate implements MyDate {
 	}
 
 }
+
+export const exactly = (value: number): AlexDate => {
+	return new AlexDate(value);
+};

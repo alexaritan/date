@@ -1,8 +1,8 @@
-import {AlexDate} from './date';
+import {exactly} from './date';
 import {oneDayInMilliseconds, oneHourInMilliseconds, oneMinuteInMilliseconds, oneSecondInMilliseconds} from './constants';
 
 export {
-	AlexDate,
+	exactly,
 	oneDayInMilliseconds,
 	oneHourInMilliseconds,
 	oneMinuteInMilliseconds,
