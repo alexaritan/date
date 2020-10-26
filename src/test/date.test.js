@@ -1,14 +1,17 @@
-import {exactly} from '../date';
+import {exactDate} from '../date';
 import {oneDayInMilliseconds} from '../constants';
 
 describe('date', () => {
+	let exactly;
+	const dateFake = {
+		now() {return 1603754192138}
+	};
+
+	beforeAll(() => {
+		exactly = exactDate(dateFake);
+	});
 	describe('AlexDate', () => {
 		describe('#constructor', () => {
-			// it('should return a properly formed object when a number is passed in', () => {
-			// 	const d = exactly(11);
-			// 	expect(d).toBeInstanceOf(AlexDate);
-			// });
-
 			it('should throw an error when no number is passed in', () => {
 				expect(() => exactly()).toThrowError('Value must be provided to constructor.');
 			});
@@ -21,14 +24,14 @@ describe('date', () => {
 		describe('#after', () => {
 			it('should set the adjustment multiplier to 1', () => {
 				const d = exactly(1).day.after.now();
-				expect(d).toBeGreaterThan(Date.now());
+				expect(d).toBeGreaterThan(dateFake.now());
 			});
 		});
 
 		describe('#ago', () => {
 			it('should subtract the provided number of provided units from the current date', () => {
 				const d = exactly(1).day.ago();
-				expect(d).toBeLessThan(Date.now());
+				expect(d).toBeLessThan(dateFake.now());
 			});
 
 			it('should throw an error when no unit of time is provided', () => {
@@ -39,26 +42,25 @@ describe('date', () => {
 		describe('#before', () => {
 			it('should set the adjustment multiplier to -1', () => {
 				const d = exactly(1).day.before.now();
-				expect(d).toBeLessThan(Date.now());
+				expect(d).toBeLessThan(dateFake.now());
 			});
 		});
 
 		describe('#date', () => {
 			it('should subtract the given number of units to the current datetime when units and adjustment multiplier are provided', () => {
-				const now = Date.now();
-				const d = exactly(1).day.before.date(Date.now());
+				const now = dateFake.now();
+				const d = exactly(1).day.before.date(now);
 
 				//Account for the possible very slight difference in time between two datetime calculations.
-				expect(now - d).toBeLessThanOrEqual(oneDayInMilliseconds);
-				expect(now - d).toBeGreaterThan(oneDayInMilliseconds - 10);
+				expect(now - d).toEqual(oneDayInMilliseconds);
 			});
 
 			it('should throw an error when no unit of time is provided', () => {
-				expect(() => exactly(1).date(Date.now())).toThrowError('Method "date" cannot be called before specifying unit of time.')
+				expect(() => exactly(1).date(dateFake.now())).toThrowError('Method "date" cannot be called before specifying unit of time.')
 			});
 
 			it('should throw an error when no adjustment multiplier is provided', () => {
-				expect(() => exactly(1).day.date(Date.now())).toThrowError('Method "date" cannot be called before specifying whether before or after.');
+				expect(() => exactly(1).day.date(dateFake.now())).toThrowError('Method "date" cannot be called before specifying whether before or after.');
 			});
 
 			it('should throw an error when the input is now a number', () => {
@@ -81,7 +83,7 @@ describe('date', () => {
 		describe('#from', () => {
 			it('should set the adjustment multiplier to 1', () => {
 				const d = exactly(1).day.from.now();
-				expect(d).toBeGreaterThan(Date.now());
+				expect(d).toBeGreaterThan(dateFake.now());
 			});
 		});
 
@@ -111,12 +113,11 @@ describe('date', () => {
 
 		describe('#now', () => {
 			it('should subtract the given number of units to the current datetime when units and adjustment multiplier are provided', () => {
-				const now = Date.now();
+				const now = dateFake.now();
 				const d = exactly(1).day.before.now();
 
 				//Account for the possible very slight difference in time between two datetime calculations.
-				expect(now - d).toBeLessThanOrEqual(oneDayInMilliseconds);
-				expect(now - d).toBeGreaterThan(oneDayInMilliseconds - 10);
+				expect(now - d).toEqual(oneDayInMilliseconds);
 			});
 
 			it('should throw an error when no unit of time is provided', () => {

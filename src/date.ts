@@ -7,6 +7,7 @@ class AlexDate implements MyDate {
 	ago: () => number;
 	before: AlexDate = this;
 	date: (date: number) => number;
+	#dateAPI: {now: () => number};
 	day: AlexDate = this;
 	days: AlexDate = this;
 	from: AlexDate = this;
@@ -18,7 +19,7 @@ class AlexDate implements MyDate {
 	second: AlexDate = this;
 	seconds: AlexDate = this;
 
-	constructor(value: number) {
+	constructor(value: number, dateAPI: {now: () => number}) {
 		//Check inputs.
 		if(value === undefined) throw new Error('Value must be provided to constructor.');
 		if(typeof value !== 'number') throw new Error('Value provided to constructor must be a number.');
@@ -28,7 +29,7 @@ class AlexDate implements MyDate {
 
 		this.ago = () => {
 			if(unit === undefined) throw new Error ('Method "ago" cannot be called before specifying unit of time.');
-			return Date.now() - (value * unit);
+			return this.#dateAPI.now() - (value * unit);
 		};
 
 		this.date = (date: number) => {
@@ -38,10 +39,12 @@ class AlexDate implements MyDate {
 			return date + (plusMinus * value * unit);
 		};
 
+		this.#dateAPI = dateAPI;
+
 		this.now = () => {
 			if(unit === undefined) throw new Error ('Method "now" cannot be called before specifying unit of time.');
 			if(plusMinus === undefined) throw new Error ('Method "now" cannot be called before specifying whether before or after.');
-			return Date.now() + (plusMinus * value * unit);
+			return this.#dateAPI.now() + (plusMinus * value * unit);
 		};
 
 		//These have to be defined like this in order for them to act as functions without needing to be called as a function.
@@ -126,6 +129,8 @@ class AlexDate implements MyDate {
 
 }
 
-export const exactly = (value: number): AlexDate => {
-	return new AlexDate(value);
+export const exactDate = (dateAPI: {now: () => number} = Date) => {
+	return function(value: number): AlexDate {
+		return new AlexDate(value, dateAPI);
+	};
 };
