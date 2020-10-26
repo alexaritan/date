@@ -1,5 +1,5 @@
 {
-	"name": "@alexaritan/date",
+	"name": "@alexaritan/exact-date",
 	"version": "0.0.1",
 	"description": "Human readable date functions",
 	"main": "dist/app.js",

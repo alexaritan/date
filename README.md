@@ -1,14 +1,14 @@
-# AlexDate
+# exact-date
 Make working with dates easy with this super lightweight date library! Includes TypeScript support!
 
 ## Get Started
 Install it
 
-`yarn add @alexaritan/date`
+`yarn add @alexaritan/exact-date`
 
 Then import it
 
-`import {exactly} from '@alexaritan/date';`
+`import {exactly} from '@alexaritan/exact-date';`
 
 Even the most complex of date calculations can be done easily. For example, need to calculate the datetime of 3 hours less than 11 days from now?
 
