@@ -8,11 +8,12 @@ Install it
 
 Then import it
 
-`import {exactly} from '@alexaritan/exact-date';`
+`import {exactDate} from '@alexaritan/exact-date';`
 
 Even the most complex of date calculations can be done easily. For example, need to calculate the datetime of 3 hours less than 11 days from now?
 
 ```
+const exactly = exactDate();
 const elevenDaysFromNow = exactly(11).days.from.now();
 const threeHoursBefore11DaysFromNow = exactly(3).hours.before.date(elevenDaysFromNow);
 ```
@@ -30,9 +31,13 @@ new Date(elevenDaysFromNow);
 
 ## Usage
 
-`exactly(number)` Returns an object with a bunch of date-related fields.
+`const exactly = exactDate();` Accepts an optional Date API as a parameter (anything that implements a `now()` function that returns a number). It defaults to the built in `Date` library if nothing is provided. It is not recommended that you pass anything in - this dependency injection is to make the unit tests predictable.
 
-### Fields
+Returns a function that accepts a number and provides access to all sorts of date manipulation functions.
+
+`exactly(number)` Returns an object with a bunch of date-related fields and functions.
+
+### Fields and functions
 - `after`
   - exactly(12).seconds.after.now();
 - `ago()`

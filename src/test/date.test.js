@@ -2,15 +2,21 @@ import {exactDate} from '../date';
 import {oneDayInMilliseconds} from '../constants';
 
 describe('date', () => {
-	let exactly;
-	const dateFake = {
-		now() {return 1603754192138}
-	};
-
-	beforeAll(() => {
-		exactly = exactDate(dateFake);
+	describe('#exactDate', () => {
+		it('should throw an error if an invalid object is provided to the exactDate function', () => {
+			expect(() => exactDate({someFunction: ''})).toThrowError();
+		});
 	});
+
 	describe('AlexDate', () => {
+		let exactly;
+		const dateFake = {
+			now() {return 1603754192138}
+		};
+		beforeAll(() => {
+			exactly = exactDate(dateFake);
+		});
+
 		describe('#constructor', () => {
 			it('should throw an error when no number is passed in', () => {
 				expect(() => exactly()).toThrowError('Value must be provided to constructor.');

@@ -129,7 +129,11 @@ class AlexDate implements MyDate {
 
 }
 
-export const exactDate = (dateAPI: {now: () => number} = Date) => {
+export const exactDate = (dateAPI: {now: () => number} = Date): (value: number) => AlexDate => {
+	if(dateAPI && !dateAPI.now) {
+		throw new Error('Provided parameter must implement a `now()` function that returns a number. It is recommended that you do not pass anything in - just let it default to the built in Date library!');
+	}
+
 	return function(value: number): AlexDate {
 		return new AlexDate(value, dateAPI);
 	};
